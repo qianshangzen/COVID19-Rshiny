@@ -8,6 +8,9 @@ Coronavirus has spread to more than 170 countries and become a global pandemic. 
 ***
 
 ### User Guide
+
+url: https://coronavirus-real-time-dynamics.shinyapps.io/COVID-19-Real-Time-Dynamics/
+
 - World Trend (home page):  
 
 
