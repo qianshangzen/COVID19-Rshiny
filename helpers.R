@@ -110,7 +110,7 @@ read_daily_data <- function(US){
 Draw_world_map <- function(data_Map, geo_data){
   #set bin and color for choropleth map
   bins <- c(0,100,1000,5000,10000,30000,80000,100000,300000,1500000,max(geo_data$TotalCases))
-  bins2 <- c(0,5,10,100,500,1000,3000,10000,30000)
+  bins2 <- c(0,5,10,100,500,1000,3000,10000,30000,100000,max(geo_data$TotalDeaths, na.rm = T))
   pal <- colorBin("YlOrRd", domain = geo_data$TotalCases, bins = bins)
   pal2 <- colorBin("YlOrRd", domain = geo_data$TotalDeaths, bins = bins2)
   
@@ -405,7 +405,7 @@ read_news <- function(country_name){
   #response$source  <- response$source$name %>% unlist
   #response$title <- (response$title %>% str_split(' [-] ', simplify = T) )[, 1]
   response$publishedAt <- str_replace_all(response$publishedAt, "[TZ]"," ")
-  response %>% select(title, description, url, publishedAt)
+  response %>% select(title, description, url, publishedAt) %>% filter(!is.na(title))
 }
 
 row_new_html <- function(x){
